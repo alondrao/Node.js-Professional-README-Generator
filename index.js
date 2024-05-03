@@ -22,33 +22,39 @@ const questions = [
 },   
 {
     type: "input",
-    name: "Installation",
+    name: "installation",
     message: "Please provide installation instructions for your project.",
 },
 {
     type: "input",
-    name: "Usage",
+    name: "usage",
     message: "Please provide usage information for your project.",
 },
 {
-    type: "checkbox",
-    name: "License",
-    message: "Please provide license information for your project.", 
+    type: "list",
+    name: "license",
+    message: "Select the type of license you would like for your project:", 
+    choices: ["MIT", "Apache", "GPL", "None"],
 },
 {
     type: "input",
-    name: "Contributing",
+    name: "contributing",
     message: "Please provide contribution guidelines for your project.",
 },
 {
     type: "input",
-    name: "Tests",
+    name: "tests",
     message: "Please provide test instructions for your project.",
 },
 {
     type: "input",
-    name: "Questions",
-    message: "Please provide contact information for your project.",
+    name: "github",
+    message: "Please provide your GitHub username.",
+},
+{
+    type: "input",
+    name: "questionsEmail",
+    message: "Please provide an email address for questions about your project.",
     
 },
 
@@ -62,7 +68,7 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions).then((responses) => {
       console.log("Your Professional README.md File is being created...");
-      writeToFile("./develp/dist/README.md", generateMarkdown({ ...responses }));
+      writeToFile("./utils/README.md", generateMarkdown({ ...responses }));
     });
   }
 // Function call to initialize app
